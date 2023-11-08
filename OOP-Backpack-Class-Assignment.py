@@ -24,7 +24,7 @@ class Backpack:
         except ValueError:
             print(f"'{item}' not found in backpack")
     def backpackState(backpack, state):
-        open_close = lambda state : True if state == "OPEN" else (False if state == "CLOSE" else "error")
+        open_close = lambda state : True if state == "OPEN" else (False if state == "CLOSED" else "error")
         backpack.open = open_close(state)
         print(f"backpack is now {state}")
 
@@ -35,8 +35,13 @@ backpack3 = Backpack("green","large")
 backpack1.backpackState("OPEN")
 backpack1.putin("lunch")
 backpack1.putin("jacket")
-backpack1.backpackState("CLOSE")
+backpack1.backpackState("CLOSED")
 backpack1.backpackState("OPEN")
 backpack1.take_out("jacket")
-backpack1.backpackState("CLOSE")
+backpack1.backpackState("CLOSED")
+
+print("\nTesting")
+backpack1.take_out("lunch")
+backpack1.backpackState("OPEN")
+backpack1.take_out("Soda")
 backpack1.take_out("lunch")
